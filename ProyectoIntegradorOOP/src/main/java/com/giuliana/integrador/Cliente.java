@@ -1,11 +1,12 @@
 package com.giuliana.integrador;
 
 public class Cliente {
-    
-    private String nombre;
-    private boolean responsableInscripto,habilitado, efectivo;
-    private int deuda;
-    private int precioAPagar;
+
+    protected String nombre;
+    protected boolean habilitado = false;
+    protected boolean responsableInscripto, efectivo;
+    protected int deuda;
+    protected int precioAPagar;
 
     public Cliente(String nombre, boolean responsableInscripto, boolean habilitado, boolean efectivo, int deuda) {
         this.nombre = nombre;
@@ -20,9 +21,6 @@ public class Cliente {
         this.responsableInscripto = responsableInscripto;
         this.efectivo = efectivo;
         this.deuda = deuda;
-    }
-
-    public Cliente() {
     }
 
     public String getNombre() {
@@ -71,6 +69,6 @@ public class Cliente {
 
     public void setPrecioAPagar(int precioAPagar) {
         this.precioAPagar = precioAPagar;
-    }    
-    
+    }
+
 }
