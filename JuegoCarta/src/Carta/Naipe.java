@@ -1,3 +1,5 @@
+package Carta;
+
 
 import java.lang.IllegalArgumentException;
 public class Naipe {

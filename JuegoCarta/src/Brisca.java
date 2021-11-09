@@ -1,6 +1,7 @@
 
+import Carta.Naipe;
 import java.util.Scanner;
-
+import Baraja.*;
 public class Brisca {
 	
 	BarajaSpain b;
@@ -13,8 +14,7 @@ public class Brisca {
 	
 	
 	public Brisca() {
-		
-		b = new BarajaSpain();
+                Dealer b = new Dealer(new BarajaSpain());
 		jugador1 = new Naipe [3];
 		jugador2 = new Naipe [3];
 		punJu1=0;
@@ -27,7 +27,7 @@ public class Brisca {
 		muestra = b.dimeCarta(0);
 		
 	}
-	
+	//SRP Y OPENCLOSE, NO FACIL DE ENTENDER ...  
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		Brisca partida = new Brisca();
