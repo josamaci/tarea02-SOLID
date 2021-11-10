@@ -1,3 +1,5 @@
+package paquete;
+
 //En este caso Cliente "hereda"(extends) de Persona
 public class Cliente extends Persona {
     //int maximo : 2147483647

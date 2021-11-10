@@ -1,3 +1,5 @@
+package paquete;
+
 import java.util.Date;
 
 //para crear una clase 
