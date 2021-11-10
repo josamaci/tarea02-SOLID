@@ -1,8 +1,9 @@
 package com.giuliana.integrador;
 
+import com.giuliana.integrador.Interfaces.IProducto;
 import java.util.ArrayList;
 
-public class Producto {
+public class Producto implements IProducto {
 
 	protected int precio, numeroId;
 	protected String descripcion;
@@ -16,9 +17,6 @@ public class Producto {
         this.importeIVA = importeIVA;
     }
         
-        public void vender(){
-            
-        }
         
     public Producto(int precio, int numeroId, String descripcion) {
         this.precio = precio;
@@ -29,6 +27,7 @@ public class Producto {
     public Producto() {
     }
     
+        @Override
     public int calcularIva(int importeIva){
         
         importeIva =+ (precio*21)/100;
