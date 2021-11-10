@@ -1,24 +1,30 @@
 package com.giuliana.integrador;
+import com.giuliana.integrador.Actores.Fabricante;
+import com.giuliana.integrador.Interfaces.IGestionDeStock;
+import com.giuliana.integrador.Interfaces.IProducto;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Manufactura 
-        extends Producto implements IGestionDeStock {
+        implements IProducto, IGestionDeStock {
     
     Scanner scan = new Scanner(System.in);
+    
     private final int PAQUETESREQUERIDOS;
+
     private int paquetesDeMateriaPrima, cantidadEnStock;
     String marca, color;
+    protected Producto producto;
 
     public Manufactura(int PAQUETESREQUERIDOS, int paquetesDeMateriaPrima, int precio, int numeroId, int cantidadEnStock, String descripcion, String marca, String color) {
-        super(precio, numeroId, descripcion);
+        producto = new Producto(precio, numeroId, descripcion);
         this.paquetesDeMateriaPrima = paquetesDeMateriaPrima;
         this.PAQUETESREQUERIDOS = PAQUETESREQUERIDOS;
         this.cantidadEnStock = cantidadEnStock;
     }
 
     public Manufactura(int PAQUETESREQUERIDOS, String marca, String color, int precio, int numeroId, String descripcion) {
-        super(precio, numeroId, descripcion);
+        producto = new Producto(precio, numeroId, descripcion);
         this.PAQUETESREQUERIDOS = PAQUETESREQUERIDOS;
         this.marca = marca;
         this.color = color;
@@ -29,8 +35,11 @@ public class Manufactura
     }   
 
     @Override
-    public void agregarAlStock() {        
-        fabricar();        
+    public void agregarAlStock() {
+        
+        Fabricante fabricante = new Fabricante();
+        
+        fabricante.fabricar(paquetesDeMateriaPrima, PAQUETESREQUERIDOS, this);
     }
 
     @Override
@@ -49,28 +58,10 @@ public class Manufactura
         }
         
     }
-
-    @Override
-    public void fabricar() {
-        //SI LA CANTIDAD DE PAQUETES DE MATERIA PRIMA PARA FABRICAR EL OBJETO QUE SE TIENE ALCANZA
-        //SE PROCEDE A FABRICAR EL PRODUCTO
-        
-        if(paquetesDeMateriaPrima >= PAQUETESREQUERIDOS){
-            paquetesDeMateriaPrima =- PAQUETESREQUERIDOS;
-            
-            this.agregarAlStock();
-            
-            System.out.println("Se ha fabricado " + this.toString() + ". Y se ha agregado al stock");
-        }else{
-            opcionReponer();            
-        }
-        
-    } 
     
-
     @Override
     public String toString() {
-        String string = (" - " + this.descripcion + " " + this.marca + " " + this.color);
+        String string = (" - " + producto.descripcion + " " + this.marca + " " + this.color);
         
         return string;        
     }
@@ -82,16 +73,6 @@ public class Manufactura
             System.out.println(this.toString());
             }
         }
-    }    
-
-    @Override
-    public void reponerMateriaPrima(int paquete) {
-        
-        Proveedor proveedor = new Proveedor();
-        proveedor.proveerMateriaPrima(paquete);
-        
-        paquetesDeMateriaPrima += paquete;
-        
     }
     
     public void opcionAgregar(){
@@ -112,27 +93,6 @@ public class Manufactura
         }
         
     }
-    
-    public void opcionReponer(){
-        String opcion;
-        System.out.println("Desea contactar al proveedor para reponer la materia prima? Y/N");
-        opcion = scan.next().toLowerCase();
-        
-        switch (opcion){
-            case "y":
-                System.out.println("Cuantos paquetes desea comprar? (Este producto requiere " + PAQUETESREQUERIDOS + " paquetes para ser fabricado).");
-                int paquetes = scan.nextInt();
-                reponerMateriaPrima(paquetes);
-                break;
-            case "n":
-                break;
-            default:
-                System.out.println("Dale che");
-                opcionReponer();
-                break;
-        }
-        
-    }
 
     public int getPaquetesDeMateriaPrima() {
         return paquetesDeMateriaPrima;
@@ -148,6 +108,23 @@ public class Manufactura
 
     public void setCantidadEnStock(int cantidadEnStock) {
         this.cantidadEnStock = cantidadEnStock;
+    }
+    
+    public int getPAQUETESREQUERIDOS() {
+        return PAQUETESREQUERIDOS;
+    }
+    
+    public Producto getProducto() {
+        return producto;
+    }
+
+    @Override
+    public int calcularIva(int importeIva) {
+
+        importeIva = +(producto.getPrecio() * 21) / 100;
+
+        return importeIva;
+
     }
     
     

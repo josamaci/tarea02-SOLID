@@ -1,4 +1,4 @@
-package com.giuliana.integrador;
+package com.giuliana.integrador.Actores;
 
 public class Proveedor {
 

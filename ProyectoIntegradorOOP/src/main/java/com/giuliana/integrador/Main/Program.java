@@ -1,10 +1,8 @@
 package com.giuliana.integrador.Main;
 
-import com.giuliana.integrador.Empresa;
-import com.giuliana.integrador.Cliente;
-import com.giuliana.integrador.Manufactura;
-import com.giuliana.integrador.Producto;
-import com.giuliana.integrador.Servicio;
+import com.giuliana.integrador.Actores.Cliente;
+import com.giuliana.integrador.Actores.Empleado;
+import com.giuliana.integrador.*;
 
 public class Program {
     
@@ -44,11 +42,13 @@ public class Program {
         //PRUEBA
         //TODOS LOS PRODUCTOS ESTAN SIN STOCK Y SIN PRODUCTOS PARA MANUFACTURA SALVO S2
         
-        carbarino.vender(c1, m1);
-        carbarino.venderServicio(c2, s3);
-        carbarino.vender(c3, m2);
-        carbarino.vender(c4, m3);
-        carbarino.vender(c5,m1);
+        Empleado empleado = new Empleado(carbarino);
+        
+        empleado.vender(c1, m1);
+        empleado.venderServicio(c2, s3);
+        empleado.vender(c3, m2);
+        empleado.vender(c4, m3);
+        empleado.vender(c5,m1);
     }
     
 }
