@@ -1,3 +1,5 @@
+package paquete;
+
 
 public class TalentoHumano {
     public static boolean ComprobarCBU(Empleado e){

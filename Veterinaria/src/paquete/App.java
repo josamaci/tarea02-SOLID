@@ -1,20 +1,22 @@
+package paquete;
+
 public class App {
    
     public static void main(String[] args) throws Exception {
         
         //en este caso creo una variable local "michi"
         //de tipo Paciente
-        Paciente michi = new Paciente();
+        Paciente michi = new PacienteFelino();
 
         //le asigna nombre al michi
         michi.nombre = "Mabel";
         michi.especie = "gati";
 
-        Paciente perrito = new Paciente();
-        perrito.nombre = "Rubencio";
-        perrito.especie = "perrito";
+        Paciente patito = new PacientePato();
+        patito.nombre = "Rubencio";
+        patito.especie = "patito";
 
-        Paciente agatha = new Paciente();
+        Paciente agatha = new PacienteFelino();
         agatha.nombre = "Agatha";
         agatha.especie = "gati";
 
@@ -22,7 +24,7 @@ public class App {
         vete.nombre = "Pupis";
 
         System.out.println("El nombre del primer paciente es: "+ michi.nombre);
-        System.out.println("El nombre del segundo paciente es: "+ perrito.nombre);
+        System.out.println("El nombre del segundo paciente es: "+ patito.nombre);
         System.out.println("El nombre del tercer paciente es: "+ agatha.nombre);
         
         Cliente dueño1 = new Cliente();
@@ -41,13 +43,13 @@ public class App {
         //generando un NullPointerException
         //System.out.println("El dueño del segundo paciente es "+ perrito.dueño.nombre);
 
-        perrito.dueño = dueño2;
+        patito.dueño = dueño2;
         agatha.dueño = dueño2;
 
         System.out.println("El dueño del tercer paciente es "+ agatha.dueño.nombre);
         
         agatha.dueño.nombre = "Lucas";
-        System.out.println("El dueño del segundo paciente es "+ perrito.dueño.nombre);
+        System.out.println("El dueño del segundo paciente es "+ patito.dueño.nombre);
         System.out.println("El dueño del tercer paciente es "+ agatha.dueño.nombre);
 
         //Llamo a los metodos de ingresarlos a la veterinaria.

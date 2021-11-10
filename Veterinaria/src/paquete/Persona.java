@@ -1,3 +1,5 @@
+package paquete;
+
 import java.util.Date;
 
 //para crear una clase 
@@ -16,14 +18,14 @@ public class Persona {
     //public significa que TODAS las otras instancias
     //pueden acceder a mi propiedad nombre
     //despues viene el tipo de dato y finalmente el nombre del atributo
-    public String nombre;
-    public String dni;
+    protected String nombre;
+    protected String dni;
     //el maximo de int es 2147483647
     //011-2525-6254-> con int se guardaria asi: 1125226264
-    public String telefono;
+    protected String telefono;
     //Date
-    public Date fechaNacimiento;
-    public String direccion;
-    public String email;
+    protected Date fechaNacimiento;
+    protected String direccion;
+    protected String email;
 
 }
